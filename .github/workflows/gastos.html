@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastos Deducibles - Weis & Asociados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and rounded corners */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 1rem; /* Rounded corners for the main container */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            background-color: #4f46e5; /* Indigo 600 */
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.75rem; /* Rounded corners for buttons */
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn:hover {
+            background-color: #4338ca; /* Indigo 700 on hover */
+        }
+        .back-btn {
+            background-color: #6b7280; /* Gray 500 */
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.75rem; /* Rounded corners for back button */
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .back-btn:hover {
+            background-color: #4b5563; /* Gray 600 on hover */
+        }
+        .detail-section {
+            display: none; /* Hidden by default */
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0; /* Light gray border */
+            border-radius: 0.75rem; /* Rounded corners for detail sections */
+            margin-top: 1.5rem;
+            background-color: #f8fafc; /* Lighter background for detail sections */
+        }
+        h1, h2, h3 {
+            color: #1a202c; /* Dark text for headings */
+        }
+        p, ul {
+            color: #4a5568; /* Medium dark text for content */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center mb-6">Corporacion Weis y Consultores</h1>
+        
+
+        <div id="buttons-section" class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6 mb-8">
+            <button class="btn" onclick="showDetail('hoteles-restaurantes')">Hoteles y Restaurantes</button>
+            <button class="btn" onclick="showDetail('servicios-profesionales')">Servicios Profesionales</button>
+            <button class="btn" onclick="showDetail('alquiler-inmuebles')">Alquiler de Inmuebles</button>
+            <button class="btn" onclick="showDetail('essalud-hogar')">EsSalud Trabajadores del Hogar</button>
+        </div>
+
+        <div id="hoteles-restaurantes" class="detail-section">
+            <h3 class="text-2xl font-bold mb-4 text-indigo-700">Hoteles y Restaurantes</h3>
+            <p class="mb-2"><strong>Porcentaje deducible:</strong> 15% del gasto efectuado.</p>
+            <p class="mb-4"><strong>Condiciones:</strong> Deben estar sustentados con boletas de venta electrónicas donde se consigne el DNI del contribuyente.</p>
+            <button class="back-btn" onclick="showButtons()">Volver</button>
+        </div>
+
+        <div id="servicios-profesionales" class="detail-section">
+            <h3 class="text-2xl font-bold mb-4 text-indigo-700">Servicios Profesionales</h3>
+            <p class="mb-2"><strong>Porcentaje deducible:</strong> 30% del gasto efectuado.</p>
+            <p class="mb-4"><strong>Condiciones:</strong> Aplica a servicios prestados por profesionales independientes (rentas de cuarta categoría) sustentados con recibos por honorarios electrónicos.</p>
+            <button class="back-btn" onclick="showButtons()">Volver</button>
+        </div>
+
+        <div id="alquiler-inmuebles" class="detail-section">
+            <h3 class="text-2xl font-bold mb-4 text-indigo-700">Alquiler de Inmuebles</h3>
+            <p class="mb-2"><strong>Porcentaje deducible:</strong> 30% del gasto efectuado.</p>
+            <p class="mb-4"><strong>Condiciones:</strong> Corresponde al alquiler de un inmueble para vivienda o para el ejercicio de la profesión, sustentado con el Formulario N° 1683 (Recibo de Arrendamiento) o contrato de arrendamiento registrado.</p>
+            <button class="back-btn" onclick="showButtons()">Volver</button>
+        </div>
+
+        <div id="essalud-hogar" class="detail-section">
+            <h3 class="text-2xl font-bold mb-4 text-indigo-700">EsSalud a Trabajadores del Hogar</h3>
+            <p class="mb-2"><strong>Porcentaje deducible:</strong> 100% del gasto efectuado.</p>
+            <p class="mb-4"><strong>Condiciones:</strong> Corresponde a los aportes al seguro social de salud (EsSalud) realizados por el empleador de un trabajador del hogar.</p>
+            <button class="back-btn" onclick="showButtons()">Volver</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to show a specific detail section and hide others
+        function showDetail(sectionId) {
+            // Hide all detail sections
+            document.querySelectorAll('.detail-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            // Hide the buttons section
+            document.getElementById('buttons-section').style.display = 'none';
+
+            // Show the requested detail section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Function to show the buttons section and hide all detail sections
+        function showButtons() {
+            // Hide all detail sections
+            document.querySelectorAll('.detail-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            // Show the buttons section
+            document.getElementById('buttons-section').style.display = 'flex';
+        }
+
+        // Initialize: show buttons and hide details on page load
+        document.addEventListener('DOMContentLoaded', showButtons);
+    </script>
+</body>
+</html>
+
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
